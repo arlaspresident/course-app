@@ -1,7 +1,6 @@
 {
   "name": "course-app",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
@@ -9,8 +8,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "parcel": "^2.14.2"
-  }
+  "description": ""
 }

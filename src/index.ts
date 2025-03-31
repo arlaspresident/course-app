@@ -8,7 +8,7 @@ interface CourseInfo {
 let courses: CourseInfo[] = JSON.parse(localStorage.getItem('courses') || '[]');
 
 function addCourse(course: CourseInfo): void {
-    if (course.some(c => c.code === course.code)){
+    if (courses.some(c => c.code === course.code)){
         alert("kurskod måste vara unik");
         return;
     }
@@ -30,4 +30,20 @@ function renderCourses(): void {
       courseList.appendChild(li);
     });
   }
-  
+  const form = document.getElementById('courseForm') as HTMLFormElement;
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const course: CourseInfo = {
+    code: (document.getElementById('code') as HTMLInputElement).value.trim(),
+    name: (document.getElementById('name') as HTMLInputElement).value.trim(),
+    progression: (document.getElementById('progression') as HTMLSelectElement).value as 'A' | 'B' | 'C',
+    syllabus: (document.getElementById('syllabus') as HTMLInputElement).value.trim()
+  };
+
+  addCourse(course);
+  form.reset();
+});
+
+
+renderCourses();
